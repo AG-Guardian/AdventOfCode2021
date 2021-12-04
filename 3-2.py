@@ -22,6 +22,8 @@ def filter_input(input, criteria, index=0):
 
     if len(result) == 1:
         return result
+    elif len(result) == 0:
+        exit("Unable to process input.")
     else:
         return filter_input(result, criteria, index + 1)
 
