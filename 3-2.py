@@ -21,7 +21,7 @@ def filter_input(input, criteria, index=0):
             result = list(filter(lambda line: line[index] == '0', input))
 
     if len(result) == 1:
-        return result
+        return result[0]
     elif len(result) == 0 or len(input) == len(result):
         exit("Unable to process input.")
     else:
@@ -32,4 +32,4 @@ input = open('in.txt', 'r').readlines()
 oxygen = filter_input(input, 'oxygen')
 carbon = filter_input(input, 'carbon')
 
-print(int(oxygen[0], 2) * int(carbon[0], 2))
+print(int(oxygen, 2) * int(carbon, 2))
