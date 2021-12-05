@@ -19,7 +19,7 @@ for line in open('in.txt', 'r').readlines():
         if start.x != end.x:
             x = x + 1 if start.x < end.x else x - 1
         if start.y != end.y:
-            y = y + 1 if start.y <= end.y else y - 1
+            y = y + 1 if start.y < end.y else y - 1
 
 count = 0
 for row in grid:
