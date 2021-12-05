@@ -10,28 +10,15 @@ for line in open('in.txt', 'r').readlines():
     nums = [int(num) for num in line.replace(' -> ', ',').split(',')]
     start = Coord(nums[0], nums[1])
     end = Coord(nums[2], nums[3])
+    x = start.x
+    y = start.y
 
-    # horizontal
-    if start.y == end.y:
-        x = start.x
-        for i in range(abs(start.x - end.x) + 1):
-            grid[x][start.y] += 1
-            x = x + 1 if start.x <= end.x else x - 1
-
-    # vertical
-    elif start.x == end.x:
-        y = start.y
-        for i in range(abs(start.y - end.y) + 1):
-            grid[start.x][y] += 1
-            y = y + 1 if start.y <= end.y else y - 1
-
-    # diagonal
-    else:
-        x = start.x
-        y = start.y
-        for i in range(abs(start.x - end.x) + 1):
-            grid[x][y] += 1
-            x = x + 1 if start.x <= end.x else x - 1
+    # use max to account for perfectly vertical or horizontal traversal
+    for i in range(max(abs(start.x - end.x) + 1, abs(start.y - end.y) + 1)):
+        grid[x][y] += 1
+        if start.x != end.x:
+            x = x + 1 if start.x < end.x else x - 1
+        if start.y != end.y:
             y = y + 1 if start.y <= end.y else y - 1
 
 count = 0
