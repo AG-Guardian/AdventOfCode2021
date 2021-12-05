@@ -14,7 +14,7 @@ for line in open('in.txt', 'r').readlines():
     y = start.y
 
     # use max to account for perfectly vertical or horizontal traversal
-    for i in range(max(abs(start.x - end.x) + 1, abs(start.y - end.y) + 1)):
+    for i in range(max(abs(start.x - end.x), abs(start.y - end.y)) + 1):
         grid[x][y] += 1
         if start.x != end.x:
             x = x + 1 if start.x < end.x else x - 1
