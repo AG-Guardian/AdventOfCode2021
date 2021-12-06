@@ -1,4 +1,7 @@
 input = open('in.txt', 'r').readlines()
+
+print(open('in.txt', 'r').read().splitlines())
+
 bit_counts = [[0, 0] for i in range(len(input[0].strip()))]
 
 for line in input:

@@ -33,23 +33,23 @@ class Board:
         return self.won
 
 
-input = open('in.txt', 'r')
-order = input.readline().strip()
-boards = []
+with open('in.txt', 'r') as file:
+    order = file.readline().strip()
+    boards = []
 
-# Build the boards from input
-row = 0
-for line in input.readlines():
-    if line == '\n':
-        boards.append(Board(len(boards)))
-        row = 0
-    else:
-        vals = line.split()
-        col = 0
-        for val in vals:
-            boards[-1].set_cell(row, col, int(val))
-            col += 1
-        row += 1
+    # Build the boards from input
+    row = 0
+    for line in file.readlines():
+        if line == '\n':
+            boards.append(Board(len(boards)))
+            row = 0
+        else:
+            vals = line.split()
+            col = 0
+            for val in vals:
+                boards[-1].set_cell(row, col, int(val))
+                col += 1
+            row += 1
 
 # Mark numbers and keep track of winners as they appear
 winners = []

@@ -27,22 +27,22 @@ class Board:
         return False
 
 
-input = open('in.txt', 'r')
-order = input.readline()
-boards = []
+with open('in.txt', 'r') as file:
+    order = file.readline()
+    boards = []
 
-row = 0
-for line in input.readlines():
-    if line == '\n':
-        boards.append(Board())
-        row = 0
-    else:
-        vals = line.split()
-        col = 0
-        for val in vals:
-            boards[-1].set_cell(row, col, int(val))
-            col += 1
-        row += 1
+    row = 0
+    for line in file.readlines():
+        if line == '\n':
+            boards.append(Board())
+            row = 0
+        else:
+            vals = line.split()
+            col = 0
+            for val in vals:
+                boards[-1].set_cell(row, col, int(val))
+                col += 1
+            row += 1
 
 winner = False
 for call in order.split(','):

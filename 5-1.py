@@ -6,7 +6,10 @@ class Coord:
 
 grid = [[0 for i in range(999)] for i in range(999)]
 
-for line in open('in.txt', 'r').readlines():
+with open('in.txt', 'r') as file:
+    lines = file.read().splitlines()
+
+for line in lines:
     nums = [int(num) for num in line.replace(' -> ', ',').split(',')]
     start = Coord(nums[0], nums[1])
     end = Coord(nums[2], nums[3])
