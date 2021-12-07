@@ -10,7 +10,7 @@ for crab in crabs:
     costs.append([abs(crab - pos) for pos in range(lo, hi)])
 
 # init an inversely sized array so that we can easily sum the columns
-inverse = [[None for i in range(len(crabs))] for i in range(len(costs[0]))]
+inverse = [[None for i in range(len(crabs))] for i in range(lo, hi)]
 
 # fill the inversed array
 for y in range(len(costs)):
