@@ -7,7 +7,7 @@ lo = min(crabs)
 
 # for each crab, build an array of fuel costs for each possible final position
 for crab in crabs:
-    costs.append([abs(crab - fuel) for fuel in range(lo, hi)])
+    costs.append([abs(crab - pos) for pos in range(lo, hi)])
 
 # init an inversely sized array so that we can easily sum the columns
 inverse = [[None for i in range(len(crabs))] for i in range(len(costs[0]))]
