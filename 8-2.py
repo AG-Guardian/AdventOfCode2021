@@ -1,52 +1,46 @@
 def decode(display: list) -> list:
-    s = {
-        0: '',
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-        6: '',
-        7: '',
-        8: '',
-        9: '',
-    }
+    decoded = ['', '', '', '', '', '', '', '', '', '']
 
-    while display:
-        display = [val for val in display if val not in s.values()]
-        for val in display:
-            if s[6] and s[8] and s[3] and len(val) == 6 and len(set(val) - set(s[3])) == 2:
-                s[0] = val
-                continue
-            elif len(val) == 2:
-                s[1] = val
-                continue
-            elif len(display) == 1:
-                s[2] = val
-                continue
-            elif s[1] and len(set(val) - set(s[1])) == 3:
-                s[3] = val
-                continue
-            elif len(val) == 4:
-                s[4] = val
-                continue
-            elif len(val) == 5 and s[6] and len(set(s[6]).union(val)) == 6:
-                s[5] = val
-                continue
-            elif s[1] and len(val) == 6 and len(set(s[1]).union(val)) == 7:
-                s[6] = val
-                continue
-            elif len(val) == 3:
-                s[7] = val
-                continue
-            elif len(val) == 7:
-                s[8] = val
-                continue
-            elif s[6] and s[0] and len(val) == 6:
-                s[9] = val
-                continue
+    # uniques [1, 4, 7, 8]
+    for val in display:
+        if len(val) == 2:
+            decoded[1] = val
+            continue
+        elif len(val) == 4:
+            decoded[4] = val
+            continue
+        elif len(val) == 3:
+            decoded[7] = val
+            continue
+        elif len(val) == 7:
+            decoded[8] = val
+            continue
 
-    return [sorted(val) for val in list(s.values())]
+    # 6 segments [0, 6, 9]
+    for val in [val for val in display if len(val) == 6 and val not in decoded]:
+        if len(set(decoded[1]).union(val)) == 7:
+            decoded[6] = val
+            continue
+        elif len(set(val) - set(decoded[4]).union(decoded[7])) == 1:
+            decoded[9] = val
+            continue
+        else:
+            decoded[0] = val
+            continue
+
+    # 5 segments [2, 3, 5]
+    for val in [val for val in display if len(val) == 5 and val not in decoded]:
+        if len(set(val) - set(decoded[1])) == 3:
+            decoded[3] = val
+            continue
+        elif len(set(decoded[6]).union(val)) == 6:
+            decoded[5] = val
+            continue
+        else:
+            decoded[2] = val
+            continue
+
+    return [sorted(val) for val in decoded]
 
 
 displays = []
