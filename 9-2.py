@@ -58,7 +58,7 @@ for y in range(len(grid)):
             if point.last:
                 point = point.last
             else:
-                path = [point]
+                path = []
                 while point.next:
                     if point.last:
                         point = point.last
