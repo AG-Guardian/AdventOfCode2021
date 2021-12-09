@@ -45,7 +45,7 @@ for y in range(len(grid)):
 
             # if this point does not flow anywhere, it's a low point. Add an entry for this basin to track its size
             if not grid[y][x].next:
-                basins[f'{x},{y}'] = 1
+                basins[(x, y)] = 1
 
 # for each point, find the low point it flows into and add 1 to the size of that basin
 for y in range(len(grid)):
@@ -58,7 +58,7 @@ for y in range(len(grid)):
                 point = point.next
 
             # once we have determined where this point flows to, we can increase its basin's size
-            basins[f'{point.x},{point.y}'] += 1
+            basins[(point.x, point.y)] += 1
 
 # sort basins by size
 sorted_basins = list(reversed(sorted(basins.values())))
