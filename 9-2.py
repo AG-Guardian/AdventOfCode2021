@@ -1,9 +1,10 @@
 class Point:
-    def __init__(self, x: int, y: int, val: int, next=None):
+    def __init__(self, x: int, y: int, val: int, next=None, last=None):
         self.x = x
         self.y = y
         self.val = val
         self.next = next
+        self.last = last
 
 
 with open('in.txt', 'r') as file:
@@ -55,7 +56,12 @@ for y in range(len(grid)):
         # if this point flows somewhere, follow the flow to the low point
         if point.next:
             while point.next:
-                point = point.next
+                if point.last:
+                    point = point.last
+                else:
+                    point = point.next
+
+            grid[y][x].last = point
 
             # once we have determined where this point flows to, we can increase its basin's size
             basins[(point.x, point.y)] += 1
