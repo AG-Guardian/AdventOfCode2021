@@ -55,9 +55,7 @@ for y in range(len(grid)):
 
         # if this point flows somewhere, follow the flow to the low point
         if point.next:
-            if point.last:
-                point = point.last
-            else:
+            if not point.last:
                 path = []
                 while point.next:
                     if point.last:
@@ -66,11 +64,10 @@ for y in range(len(grid)):
                         path.append(point)
                         point = point.next
 
+                # for each point along the path cache the low point and increase the size of the basin
                 for p in path:
                     p.last = point
-
-            # once we have determined where this point flows to, we can increase its basin's size
-            basins[(point.x, point.y)] += 1
+                basins[(point.x, point.y)] += len(path)
 
 # sort basins by size
 sorted_basins = list(reversed(sorted(basins.values())))
