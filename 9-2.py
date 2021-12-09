@@ -23,6 +23,7 @@ for y in range(len(grid)):
         if y > 0:
             if grid[y - 1][x] <= val:
                 continue
+
         # if we made it here, this is a low point. Add an entry for this basin
         basins[f'{x},{y}'] = 0
 
