@@ -47,7 +47,7 @@ displays = []
 values = []
 total = 0
 
-with open('in.txt', 'r') as file:
+with open('../Day 10/in.txt', 'r') as file:
     for line in file.readlines():
         displays.append(line.split('|')[0].split())
         values.append(line.split('|')[1].split())

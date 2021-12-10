@@ -1,4 +1,4 @@
-with open('in.txt', 'r') as file:
+with open('../Day 10/in.txt', 'r') as file:
     fishes = [int(day) for day in file.read().split(',')]
 
 fish_by_day = [0, 0, 0, 0, 0, 0, 0, 0, 0]

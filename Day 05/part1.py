@@ -6,7 +6,7 @@ class Coord:
 
 grid = [[0 for i in range(999)] for i in range(999)]
 
-with open('in.txt', 'r') as file:
+with open('../Day 10/in.txt', 'r') as file:
     lines = file.read().splitlines()
 
 for line in lines:

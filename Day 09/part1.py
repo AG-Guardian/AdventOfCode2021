@@ -1,4 +1,4 @@
-with open('in.txt', 'r') as file:
+with open('../Day 10/in.txt', 'r') as file:
     lines = file.read().splitlines()
 
 # set up the grid as a 2d array of ints

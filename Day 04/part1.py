@@ -27,7 +27,7 @@ class Board:
         return False
 
 
-with open('in.txt', 'r') as file:
+with open('../Day 10/in.txt', 'r') as file:
     order = file.readline()
     boards = []
 

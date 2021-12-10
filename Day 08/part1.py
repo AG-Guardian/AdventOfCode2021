@@ -1,6 +1,6 @@
 values = []
 
-with open('in.txt', 'r') as file:
+with open('../Day 10/in.txt', 'r') as file:
     for line in file.readlines():
         values.append(line.split('|')[1].split())
 
