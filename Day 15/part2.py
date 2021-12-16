@@ -27,8 +27,7 @@ def build_thicc_grid(lines: list):
 
                     # calculate the new value based on the position and original template value
                     val = (template[(x, y)] + x_offset + y_offset) % 9
-                    if val == 0:
-                        val = 9
+                    val = 9 if val == 0 else val
 
                     # create the Node and find the keys of its neighbors
                     node = grid[(current_x, current_y)] = Node(val)
