@@ -113,17 +113,6 @@ def split(string: str) -> str:
         previous = char
 
 
-def validate(string):
-    left = 0
-    right = 0
-    for char in string:
-        if char == '[':
-            left += 1
-        elif char == ']':
-            right += 1
-    return left == right
-
-
 def magnitude(obj) -> int:
     if isinstance(obj, list):
         return 3*magnitude(obj[0]) + 2*magnitude(obj[1])
