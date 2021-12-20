@@ -71,7 +71,7 @@ def explode(string: str) -> str:
                 right_num = ''
                 right_between = ''
 
-            return left_string + left_num + left_between + '0' + right_between + right_num + right_string
+            return f'{left_string}{left_num}{left_between}0{right_between}{right_num}{right_string}'
 
         previous = char
 
@@ -105,10 +105,10 @@ def split(string: str) -> str:
             left_string = string[:first_index]
             right_string = string[last_index + 1:]
             num = int(string[first_index:last_index + 1])
-            left_num = math.floor(num / 2)
-            right_num = math.ceil(num / 2)
+            left_num = str(math.floor(num / 2))
+            right_num = str(math.ceil(num / 2))
 
-            return left_string + '[' + str(left_num) + ',' + str(right_num) + ']' + right_string
+            return f'{left_string}[{left_num},{right_num}]{right_string}'
 
         previous = char
 
@@ -137,7 +137,7 @@ with open('in.txt', 'r') as file:
 magnitudes = []
 for snumber1 in lines:
     for snumber2 in list(filter(lambda l: l != snumber1, lines)):
-        snumber = ''.join(['[', snumber1, ',', snumber2, ']'])
+        snumber = f'[{snumber1},{snumber2}]'
         while True:
             if explodable(snumber):
                 snumber = explode(snumber)
